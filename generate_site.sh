@@ -38,7 +38,7 @@ if [ ! $? -eq 0 ]; then
         do
         : 
             filename=${i:5} # remove the /full part of the string
-            echo "<img src='https://${AWS_BUCKET_NAME}.s3.amazonaws.com/thumbnail/thumbnail_${filename}'></img>" >> index.html
+            echo "<a href='https://${AWS_BUCKET_NAME}.s3.amazonaws.com/full/${filename}'><img src='https://${AWS_BUCKET_NAME}.s3.amazonaws.com/thumbnail/thumbnail_${filename}'></img></a>" >> index.html
         done
     done < files_on_s3
 
