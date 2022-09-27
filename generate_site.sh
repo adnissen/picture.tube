@@ -4,7 +4,7 @@ mkdir site
 cd site
 
 # use cut to remove the first element of the list, which is full/
-aws s3api list-objects --bucket $AWS_BUCKET_NAME --query Contents[].Key --prefix full/ --output text | cut -f 2- > files_on_s3 > files_on_s3
+aws s3api list-objects --bucket $AWS_BUCKET_NAME --query Contents[].Key --prefix full/ --output text | cut -f 2- > files_on_s3
 if [ ! -f "last_processed_files" ]; then
     touch last_processed_files
 fi

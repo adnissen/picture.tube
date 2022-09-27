@@ -13,6 +13,11 @@ cd processing
 # we do this instead of manipulating the entire directory so that we can be sure we don't miss any files in the case that an upload happens while processing
 # use cut to remove the first element of the list, which is upload/
 aws s3api list-objects --bucket $AWS_BUCKET_NAME --query Contents[].Key --prefix upload/ --output text | cut -f 2- > files_to_process
+if [ $(head -1 files_to_process) == "None" ]; then
+    echo "No files in the /upload directory, done."
+    exit
+fi
+
 
 while IFS=$'\t' read -r -a filesArray
 do
