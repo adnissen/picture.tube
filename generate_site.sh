@@ -50,7 +50,7 @@ if [ ! $? -eq 0 ]; then
     mv 1.html index.html
 
     # upload the site folder to the s3 static site bucket
-    aws s3 cp ./ s3://$AWS_STATIC_SITE_BUCKET_NAME/ --include "*.html" --recursive   
+    aws s3 cp ./ s3://$AWS_STATIC_SITE_BUCKET_NAME/ --exclude "*" --include "*.html" --recursive   
 
 else
     echo "no changes found, done."
