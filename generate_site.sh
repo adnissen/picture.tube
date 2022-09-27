@@ -20,33 +20,32 @@ if [ ! $? -eq 0 ]; then
     cat files_on_s3 | awk '/\t/' | wc -l
     ((total_image_count=$?+1))
     page_size=20
-
+    current_page=1
+    # to get the total number of pages, divide the total number of images by the page size and round up
+    totalPages=$((($total_image_count + $page_size - 1)/$page_size))
+    
     rm index.html
-    echo '<!doctype html>' >> index.html
-    echo '<html lang="en">' >> index.html
-    echo '<head>' >> index.html
-    echo '<title>picture.tube</title>' >> index.html
-    echo '<meta name="author" content="Andrew Nissen">' >> index.html
-    echo '<link rel="stylesheet" href="style.css">' >> index.html
-    echo '</head>' >> index.html
-    echo '<body>' >> index.html
-    echo "<p>There are ${total_image_count} total images on this site. All images are at the highest possible jpeg quality and free for non-commercial use.</p>" >> index.html
-    echo "<p>Click for full resolution. <strong>Warning: </strong>some jpges are > 40mb in size.</p>" >> index.html
     while IFS=$'\t' read -r -a filesArray
     do
-        for i in "${filesArray[@]}"
+        for pageNum in $totalPages
         do
-        : 
-            filename=${i:5} # remove the /full part of the string
-            echo "<a href='https://${AWS_BUCKET_NAME}.s3.amazonaws.com/full/${filename}'><img src='https://${AWS_BUCKET_NAME}.s3.amazonaws.com/thumbnail/thumbnail_${filename}'></img></a>" >> index.html
+        :
+            # get every x elements, where x is the page size
+            for imageBatch in ${filesArray[@]:$((($current_page-1)*$page_size)):$page_size}
+            do
+            : 
+                echo "${pageNum} of ${totalPages} pages. Images: ${imageBatch}"
+                cd ..
+                ./generate_page.sh $pageNum $totalPages $imageBatch
+            done
         done
     done < files_on_s3
 
-    echo '</body>' >> index.html
-    echo '</html>' >> index.html
-
     # set the list of files we just generated the site with as the last_processed_files list
+    cd site
     mv files_on_s3 last_processed_files
+    # rename the first page to index.html
+    mv 1.html index.html
 else
     echo "no changes found, done."
 fi
