@@ -11,9 +11,6 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 unzip awscliv2.zip
 sudo ./aws/install
 
-aws s3 mkdir s3://$AWS_BUCKET_NAME/upload
-aws s3 mkdir s3://$AWS_BUCKET_NAME/full
-aws s3 mkdir s3://$AWS_BUCKET_NAME/thumbnail
 echo "Make sure the full and thumbnail directories are readable by the public!"
 
 # configure the image processing cron job
