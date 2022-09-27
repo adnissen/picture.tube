@@ -3,7 +3,7 @@ source .env
 mkdir site
 cd site
 
-# use cut to remove the first element of the lust, which is full/
+# use cut to remove the first element of the list, which is full/
 aws s3api list-objects --bucket $AWS_BUCKET_NAME --query Contents[].Key --prefix full/ --output text | cut -f 2- > files_on_s3 > files_on_s3
 if [ ! -f "last_processed_files" ]; then
     touch last_processed_files
@@ -41,11 +41,17 @@ if [ ! $? -eq 0 ]; then
         done
     done < files_on_s3
 
-    # set the list of files we just generated the site with as the last_processed_files list
     cd site
+
+    # set the list of files we just generated the site with as the last_processed_files list
     mv files_on_s3 last_processed_files
+
     # rename the first page to index.html
     mv 1.html index.html
+
+    # upload the site folder to the s3 static site bucket
+    aws s3 cp -r . s3://$AWS_STATIC_SITE_BUCKET_NAME    
+
 else
     echo "no changes found, done."
 fi

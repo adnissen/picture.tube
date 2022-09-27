@@ -1,5 +1,3 @@
-source .env
-
 pageNum=$1 # page x
 shift
 pageOf=$1 # of y
