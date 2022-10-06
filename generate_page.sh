@@ -14,7 +14,7 @@ echo '<body>' >> site/$pageNum.html
 echo "<p>All images are at the highest possible jpeg quality and free for non-commercial use.</p>" >> site/$pageNum.html
 echo "<p>Click for full resolution. <strong>Warning: </strong>some jpges are > 40mb in size.</p>" >> site/$pageNum.html
 
-echo "<p>Page ${pageNum} of ${pageOf}."
+echo "<p>Page ${pageNum} of ${pageOf}"
 
 # if we're not the first page we want a previous button
 if [ ! $pageNum -eq 1 ];then
