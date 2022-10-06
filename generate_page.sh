@@ -31,5 +31,15 @@ do
     filename=${i:5} # remove the /full part of the string
     echo "<a href='${AWS_IMAGEHOST_DOMAIN}/full/${filename}'><img src='${AWS_IMAGEHOST_DOMAIN}/thumbnail/thumbnail_${filename}'></img></a>" >> site/$pageNum.html
 done
+
+# but the page navigation buttons at the top and the bottom of the page
+if [ ! $pageNum -eq 1 ];then
+    echo "<a href='/$((${pageNum}-1)).html'>Previous</a>  " > site/$pageNum.html
+fi
+
+if [ ! $pageNum -eq $pageOf ];then
+    echo "<a href='/$((${pageNum}+1)).html'>Next</a>" >> site/$pageNum.html
+fi
+
 echo '</body>' >> site/$pageNum.html
 echo '</html>' >> site/$pageNum.html
