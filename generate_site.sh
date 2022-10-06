@@ -1,7 +1,7 @@
 source .env
 
 firstArg=$1
-if [ "$firstArg" = "-force"]; then
+if [ "$firstArg" = "-force" ]; then
     rm -rf site
 fi
 
