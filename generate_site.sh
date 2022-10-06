@@ -47,8 +47,6 @@ if [ ! $? -eq 0 ]; then
         done
     done < files_on_s3
 
-    cd site
-
     # set the list of files we just generated the site with as the last_processed_files list
     mv files_on_s3 last_processed_files
 
