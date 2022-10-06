@@ -42,6 +42,7 @@ if [ ! $? -eq 0 ]; then
                 echo "${pageNum} of ${totalPages} pages. Images: ${imageBatch}"
                 cd ..
                 ./generate_page.sh $pageNum $totalPages $imageBatch
+                cd site
             done
         done
     done < files_on_s3
