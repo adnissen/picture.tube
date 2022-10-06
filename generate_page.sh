@@ -11,8 +11,21 @@ echo '<meta name="author" content="Andrew Nissen">' >> site/$pageNum.html
 echo '<link rel="stylesheet" href="style.css">' >> site/$pageNum.html
 echo '</head>' >> site/$pageNum.html
 echo '<body>' >> site/$pageNum.html
-echo "<p>There are ${total_image_count} total images on this site. All images are at the highest possible jpeg quality and free for non-commercial use.</p>" >> site/$pageNum.html
+echo "<p>All images are at the highest possible jpeg quality and free for non-commercial use.</p>" >> site/$pageNum.html
 echo "<p>Click for full resolution. <strong>Warning: </strong>some jpges are > 40mb in size.</p>" >> site/$pageNum.html
+
+echo "<p>Page ${pageNum} of ${pageOf}."
+
+# if we're not the first page we want a previous button
+if [ ! $pageNum -eq 1 ];then
+    echo "<a href='/$((${pageNum}-1)).html'>Previous</a>  " > site/$pageNum.html
+fi
+
+# if we're not the last page then we want a next button
+if [ ! $pageNum -eq $pageOf ];then
+    echo "<a href='/$((${pageNum}+1)).html'>Next</a>" >> site/$pageNum.html
+fi
+
 for i in $images
 do
     filename=${i:5} # remove the /full part of the string
