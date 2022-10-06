@@ -1,5 +1,10 @@
 source .env
 
+firstArg = $1
+if [ "$firstArg" = "-force"]; then
+    rm -rf site
+fi
+
 mkdir site
 cd site
 
