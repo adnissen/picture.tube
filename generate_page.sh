@@ -16,7 +16,7 @@ echo "<p>Click for full resolution. <strong>Warning: </strong>some jpges are > 4
 for i in $images
 do
     filename=${i:5} # remove the /full part of the string
-    echo "<a href='https://${AWS_BUCKET_NAME}.s3.amazonaws.com/full/${filename}'><img src='https://${AWS_BUCKET_NAME}.s3.amazonaws.com/thumbnail/thumbnail_${filename}'></img></a>" >> site/$pageNum.html
+    echo "<a href='${AWS_IMAGEHOST_DOMAIN}/full/${filename}'><img src='${AWS_IMAGEHOST_DOMAIN}/thumbnail/thumbnail_${filename}'></img></a>" >> site/$pageNum.html
 done
 echo '</body>' >> site/$pageNum.html
 echo '</html>' >> site/$pageNum.html
