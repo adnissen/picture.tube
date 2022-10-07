@@ -18,12 +18,12 @@ echo "<p>Page ${pageNum} of ${pageOf}</p>" >> site/$pageNum.html
 
 # if we're not the first page we want a previous button
 if [ ! $pageNum -eq 1 ];then
-    echo "<a href='/$((${pageNum}-1)).html'>Previous</a>  " > site/$pageNum.html
+    echo "<a href='/$((${pageNum}-1)).html'>Previous</a>  " >> site/$pageNum.html
 fi
 
 # if we're not the last page then we want a next button
 if [ ! $pageNum -eq $pageOf ];then
-    echo "<a href='/$((${pageNum}+1)).html'>Next</a>" >> site/$pageNum.html
+    echo "<a href='/$((${pageNum}+1)).html'>Next</a><br />" >> site/$pageNum.html
 fi
 
 for i in $images
@@ -34,7 +34,7 @@ done
 
 # but the page navigation buttons at the top and the bottom of the page
 if [ ! $pageNum -eq 1 ];then
-    echo "<a href='/$((${pageNum}-1)).html'>Previous</a>  " > site/$pageNum.html
+    echo "<a href='/$((${pageNum}-1)).html'>Previous</a>  " >> site/$pageNum.html
 fi
 
 if [ ! $pageNum -eq $pageOf ];then
