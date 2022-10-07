@@ -21,8 +21,8 @@ if [ ! $? -eq 0 ]; then
     echo "changes found, regenerating site"
 
     # get the total number of images
-    cat site/files_on_s3 | awk -F$'\t' '{print NF-1;}'
-    ((total_image_count=$?+1))
+    total_image_count=$(cat site/files_on_s3 | awk -F$'\t' '{print NF-1;}')
+    ((total_image_count=$total_image_count+1))
     page_size=20
     # to get the total number of pages, divide the total number of images by the page size and round up
     totalPages=$((($total_image_count + $page_size - 1)/$page_size))
