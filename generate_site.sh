@@ -26,7 +26,8 @@ if [ ! $? -eq 0 ]; then
     page_size=20
     # to get the total number of pages, divide the total number of images by the page size and round up
     totalPages=$((($total_image_count + $page_size - 1)/$page_size))
-    
+    echo $total_image_count total images
+    echo $totalPages total pages
     rm site/index.html
     while IFS=$'\t' read -r -a filesArray
     do
