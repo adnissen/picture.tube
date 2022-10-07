@@ -30,7 +30,6 @@ if [ ! $? -eq 0 ]; then
     totalPages=$((($total_image_count + $page_size - 1)/$page_size))
     
     rm index.html
-    cd ..
     while IFS=$'\t' read -r -a filesArray
     do
         for pageNum in $totalPages
@@ -39,7 +38,7 @@ if [ ! $? -eq 0 ]; then
             # get every x elements, where x is the page size
             imageBatch=${filesArray[@]:$((($current_page-1)*$page_size)):$page_size}
             echo "${pageNum} of ${totalPages} pages. Images: ${imageBatch}"
-            ./generate_page.sh $pageNum $totalPages $imageBatch
+            ../generate_page.sh $pageNum $totalPages $imageBatch
         done
     done < files_on_s3
 
