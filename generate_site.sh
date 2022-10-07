@@ -31,7 +31,7 @@ if [ ! $? -eq 0 ]; then
     rm site/index.html
     while IFS=$'\t' read -r -a filesArray
     do
-        for pageNum in {1..$totalPages}
+        for pageNum in `seq 1 $totalPages`
         do
         :
             # get every x elements, where x is the page size
