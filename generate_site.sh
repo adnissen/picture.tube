@@ -24,7 +24,6 @@ if [ ! $? -eq 0 ]; then
     cat site/files_on_s3 | awk '/\t/' | wc -l
     ((total_image_count=$?+1))
     page_size=20
-    current_page=1
     # to get the total number of pages, divide the total number of images by the page size and round up
     totalPages=$((($total_image_count + $page_size - 1)/$page_size))
     
@@ -35,7 +34,7 @@ if [ ! $? -eq 0 ]; then
         do
         :
             # get every x elements, where x is the page size
-            imageBatch=${filesArray[@]:$((($current_page-1)*$page_size)):$page_size}
+            imageBatch=${filesArray[@]:$((($pageNum-1)*$page_size)):$page_size}
             echo "${pageNum} of ${totalPages} pages. Images: ${imageBatch}"
             ./generate_page.sh $pageNum $totalPages $imageBatch
         done
