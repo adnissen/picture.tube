@@ -28,7 +28,7 @@ if [ ! $? -eq 0 ]; then
     totalPages=$((($total_image_count + $page_size - 1)/$page_size))
     echo $total_image_count total images
     echo $totalPages total pages
-    rm site/index.html
+    rm site/*.html
     while IFS=$'\t' read -r -a filesArray
     do
         for pageNum in `seq 1 $totalPages`
