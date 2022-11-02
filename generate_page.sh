@@ -26,12 +26,15 @@ if [ ! $pageNum -eq $pageOf ];then
     echo "<a href='/$((${pageNum}+1)).html'>Next</a><br />" >> site/$pageNum.html
 fi
 
+echo "<ul>" >> site/$pageNum.html
 for i in $images
 do
     filename=${i:5} # remove the /full part of the string
-    echo "<a href='${AWS_IMAGEHOST_DOMAIN}/full/${filename}'><img src='${AWS_IMAGEHOST_DOMAIN}/thumbnail/thumbnail_${filename}'></img></a>" >> site/$pageNum.html
+    echo "<li><a href='${AWS_IMAGEHOST_DOMAIN}/full/${filename}'><img src='${AWS_IMAGEHOST_DOMAIN}/thumbnail/thumbnail_${filename}' loading='lazy'></img></a></li>" >> site/$pageNum.html
 done
-
+# to fix flexbox trying to fill the last row
+echo "<li></li>" >> site/$pageNum.html
+echo "<ul>" >> site/$pageNum.html
 # but the page navigation buttons at the top and the bottom of the page
 if [ ! $pageNum -eq 1 ];then
     echo "<a href='/$((${pageNum}-1)).html'>Previous</a>  " >> site/$pageNum.html
