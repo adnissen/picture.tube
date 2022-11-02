@@ -26,7 +26,7 @@ do
         : 
         filename=${i:7} # remove the /upload part of the string
         aws s3 cp s3://$AWS_BUCKET_NAME/upload/$filename . # download the image
-        convert -thumbnail 600 $filename thumbnail_$filename # create the thumbnail
+        convert -thumbnail 2000 $filename thumbnail_$filename # create the thumbnail
         aws s3 cp thumbnail_$filename s3://$AWS_BUCKET_NAME/thumbnail/thumbnail_$filename # upload the thumbnail
         aws s3 mv s3://$AWS_BUCKET_NAME/upload/$filename s3://$AWS_BUCKET_NAME/full/$filename
     done
