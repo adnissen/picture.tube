@@ -34,7 +34,7 @@ do
 done
 # to fix flexbox trying to fill the last row
 echo "<li></li>" >> site/$pageNum.html
-echo "<ul>" >> site/$pageNum.html
+echo "</ul>" >> site/$pageNum.html
 # but the page navigation buttons at the top and the bottom of the page
 if [ ! $pageNum -eq 1 ];then
     echo "<a href='/$((${pageNum}-1)).html'>Previous</a>  " >> site/$pageNum.html
