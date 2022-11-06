@@ -5,6 +5,10 @@ html {
   color: #f4f4f4;
 }
 
+a {
+  color: #0072ce;
+}
+
 ul {
   display: flex;
   flex-wrap: wrap;
