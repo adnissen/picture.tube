@@ -1,3 +1,10 @@
+html {
+  background-color: #1c1c1c;
+  font-family: "OpenSans", "Arial", sans-serif;
+  src: url('./OpenSans-Medium.ttf');
+  color: #f4f4f4;
+}
+
 ul {
   display: flex;
   flex-wrap: wrap;
