@@ -51,7 +51,7 @@ if [ ! $? -eq 0 ]; then
     aws s3 cp ./site s3://$AWS_STATIC_SITE_BUCKET_NAME/ --exclude "*" --include "*.html" --recursive   
     aws s3 cp ./ s3://$AWS_STATIC_SITE_BUCKET_NAME/ --exclude "*" --include "*.css" --recursive
     aws s3 cp ./ s3://$AWS_STATIC_SITE_BUCKET_NAME/ --exclude "*" --include "*.js" --recursive 
-    aws s3 cp ./ s3://$AWS_STATIC_SITE_BUCKET_NAME/ --exclude "*" --include "*.ttv" --recursive 
+    aws s3 cp ./ s3://$AWS_STATIC_SITE_BUCKET_NAME/ --exclude "*" --include "*.ttf" --recursive 
 else
     echo "no changes found, done."
 fi
