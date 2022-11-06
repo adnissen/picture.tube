@@ -15,7 +15,7 @@ li:last-child {
 }
 
 img {
-  max-height: 100%;
+  height: 20em;
   min-width: 100%;
   object-fit: cover;
   vertical-align: bottom;
