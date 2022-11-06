@@ -17,7 +17,7 @@ ul {
 }
 
 li {
-  flex-grow: 1;
+  width: fit-content;
 }
 
 li:last-child {
@@ -27,7 +27,7 @@ li:last-child {
 
 img {
   height: 20em;
-  min-width: 100%;
+  width: fit-content;
   object-fit: cover;
   vertical-align: bottom;
 }
