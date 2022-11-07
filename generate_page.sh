@@ -36,7 +36,7 @@ do
         echo "</div>" >> site/$pageNum.html
         echo "<div class='column'>" >> site/$pageNum.html
     fi
-    imageNum=imageNum+1
+    imageNum=$(($imageNum+1))
     echo "<a href='${AWS_IMAGEHOST_DOMAIN}/full/${filename}'><img src='${AWS_IMAGEHOST_DOMAIN}/thumbnail/thumbnail_${filename}' style="width:100%" loading='lazy'></img></a>" >> site/$pageNum.html
 done
 echo "</div>" >> site/$pageNum.html
