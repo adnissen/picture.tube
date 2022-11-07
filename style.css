@@ -9,6 +9,10 @@ a {
   color: #0072ce;
 }
 
+img {
+  margin-top: 0px;
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -19,7 +23,7 @@ a {
 .column {
   flex: 25%;
   max-width: 25%;
-  padding: 0 4px;
+  padding: 0 0px;
 }
 
 .column img {
