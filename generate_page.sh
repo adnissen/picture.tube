@@ -32,7 +32,7 @@ imageNum=0
 for i in $images
 do
     filename=${i:5} # remove the /full part of the string
-    if [ $((imageNum%4)) -eq 0 && ! $imageNum -eq 0 ]; then
+    if [ $((imageNum%4)) -eq 0 ] && [ ! $imageNum -eq 0 ]; then
         echo "</div>" >> site/$pageNum.html
         echo "<div class='column'>" >> site/$pageNum.html
     fi
